@@ -1,0 +1,7 @@
+## Interface: 11200
+## Title: |cFF9370DBS|cFF8A6FCAh|cFF826DB9a|cFF7A6BA8d|cFF726997o|cFF6A6795w|cFF726997 |cFF7A6BA8T|cFF826DB9r|cFF8A6FCAa|cFF9370DBn|cFF8A6FCAc|cFF826DB9e |cFFFFFFFFAlert
+## Author: Clempton, Clumpton, Fruiter
+## Version: 1.0.0
+## Notes: Displays an animation when the "Shadow Trance" talent procs.
+
+ShadowTranceAlert.lua
