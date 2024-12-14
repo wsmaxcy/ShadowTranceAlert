@@ -40,7 +40,7 @@ ShadowTranceAlert provides a visual alert when the **Shadow Trance** buff (Night
 ## Visual Demonstration:
 Here's an example of what you'll see in-game when **Shadow Trance** procs:
 
-![Shadow Trance Overlay Example](https://github.com/wsmaxcy/ShadowTranceAlert/alert.png)
+![Shadow Trance Overlay Example](https://github.com/wsmaxcy/ShadowTranceAlert/blob/main/alert.png)
 
 ---
 
