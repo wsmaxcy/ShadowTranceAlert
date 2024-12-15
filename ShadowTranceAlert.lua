@@ -26,8 +26,12 @@ local leftTexture = CreateSideTexture(-150, false) -- Left side, normal orientat
 local rightTexture = CreateSideTexture(150, true)  -- Right side, flipped horizontally
 
 -- Pulse Animation Variables
-local pulseAlpha = 0
+local pulseAlpha = 0.3
 local pulseDirection = 0.01 -- Fade in speed
+local minScale = 0.8 -- Minimum scale multiplier
+local maxScale = 1.0 -- Maximum scale multiplier
+local baseWidth = 128 -- Base width of the texture
+local baseHeight = 256 -- Base height of the texture
 
 -- Function to check for Shadow Trance
 local function CheckShadowTrance()
@@ -50,7 +54,7 @@ local function CheckShadowTrance()
     end
 end
 
--- OnUpdate script to create pulsing effect
+-- OnUpdate script to create pulsing effect (opacity + manual scaling)
 f:SetScript("OnUpdate", function(self, elapsed)
     -- Update alpha for pulse
     pulseAlpha = pulseAlpha + pulseDirection
@@ -62,10 +66,21 @@ f:SetScript("OnUpdate", function(self, elapsed)
         pulseDirection = -0.01 -- Fade out
     end
 
-    -- Apply alpha to both textures
+    -- Calculate scale based on alpha
+    local scale = minScale + (pulseAlpha - 0.3) / 0.5 * (maxScale - minScale) -- Linear interpolation
+
+    -- Apply alpha and scale to both textures
     if leftTexture:IsShown() and rightTexture:IsShown() then
         leftTexture:SetAlpha(pulseAlpha)
         rightTexture:SetAlpha(pulseAlpha)
+
+        -- Adjust width and height for scaling effect
+        local scaledWidth = baseWidth * scale
+        local scaledHeight = baseHeight * scale
+        leftTexture:SetWidth(scaledWidth)
+        leftTexture:SetHeight(scaledHeight)
+        rightTexture:SetWidth(scaledWidth)
+        rightTexture:SetHeight(scaledHeight)
     end
 end)
 
@@ -75,4 +90,4 @@ auraFrame:RegisterEvent("PLAYER_AURAS_CHANGED")
 auraFrame:SetScript("OnEvent", CheckShadowTrance)
 
 -- Print confirmation in chat
-DEFAULT_CHAT_FRAME:AddMessage("Shadow Trance Alert: Addon loaded and monitoring for Shadow Trance!", 1, 1, 0)
+DEFAULT_CHAT_FRAME:AddMessage("|cFF9370DBS|cFF8A6FCAh|cFF826DB9a|cFF7A6BA8d|cFF726997o|cFF6A6795w|cFF726997 |cFF7A6BA8T|cFF826DB9r|cFF8A6FCAa|cFF9370DBn|cFF8A6FCAc|cFF826DB9e |cFFFFFFFFAlert Loaded. Tracking Shadow Trance Procs.", 1, 1, 0)
